@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cstdlib>
+#include <sstream>
+#include <cstring>
+#define WINVER 0x0500
+#include <windows.h>
+
+using namespace std;
+
+int main()
+{
+    Sleep(3000);
+    INPUT ms;
+    ms.type = INPUT_MOUSE;
+    ms.mi.time = 0;
+    ms.mi.dwExtraInfo = 0;
+    ms.mi.mouseData = 0;
+     Sleep(100);
+    ms.mi.dx = -1400;
+    ms.mi.dy = -1400;
+    Sleep(100);
+    ms.mi.dwFlags = MOUSEEVENTF_MOVE;
+    SendInput(1, &ms, sizeof(INPUT));
+    Sleep(100);
+    ms.mi.dx = 410; // --------> just change to your own coordinates
+    ms.mi.dy = 170; // --------> just change to your own coordinates
+    Sleep(100);
+    ms.mi.dwFlags = MOUSEEVENTF_MOVE;
+    SendInput(1, &ms, sizeof(INPUT));
+
+    return 0;
+}
